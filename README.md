@@ -1,14 +1,13 @@
-Universal Android Music Player Sample
-=====================================
-The goal of this sample is to show how to implement an audio media app that works
-across multiple form factors and provides a consistent user experience
-on Android phones, tablets, Android Auto, Android Wear, Android TV, Google Cast devices,
-and with the Google Assistant. 
+XR Universal Android Music Player Sample
+========================================
+The goal of this sample is to show how to implement an audio media app that works and provides a 
+consistent user experience on regular Android devices and on XR devices like the Meta Quest. 
 
-To get started with UAMP please read the [full guide](docs/FullGuide.md).
+This sample is a fork of the [UAMP](https://github.com/android/uamp) sample so to get started with 
+XRUAMP please read the [full UAMP guide](https://github.com/android/uamp/blob/65a27cde558d6a48ec6555396df72fe1039c4e6e/docs/FullGuide.md).
 
-![Screenshot showing UAMP's UI for browsing albums and songs](docs/images/1-browse-albums-screenshot.png "Browse albums screenshot")
-![Screenshot showing UAMP's UI for playing a song](docs/images/2-play-song-screenshot.png "Play song screenshot")
+![Screenshot showing XRUAMP's UI for browsing albums and songs](docs/images/1-browse-albums-screenshot.png "Browse albums screenshot")
+![Screenshot showing XRUAMP's UI for playing a song](docs/images/2-play-song-screenshot.png "Play song screenshot")
 
 Pre-requisites
 --------------
@@ -24,15 +23,14 @@ This sample uses the Gradle build system. To build this project, use the
 Support
 -------
 
-- Check out the [FAQs page](docs/FAQs.md)
+- Check out the [FAQs page](https://github.com/android/uamp/blob/65a27cde558d6a48ec6555396df72fe1039c4e6e/docs/FAQs.md)
 - Stack Overflow: http://stackoverflow.com/questions/tagged/android
 
 If you've found an error in this sample, please
-[file an issue](https://github.com/android/UAMP/issues)
+[file an issue](https://github.com/m4gr3d/xruamp/issues)
 
 Patches are encouraged and may be submitted by forking this project and
-submitting a pull request through GitHub. Please see [CONTRIBUTING.md](CONTRIBUTING.md) for more
-details.
+submitting a pull request through GitHub.
 
 Music
 -----
