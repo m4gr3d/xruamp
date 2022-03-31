@@ -23,6 +23,7 @@ import android.database.Cursor
 import android.net.Uri
 import android.os.ParcelFileDescriptor
 import com.bumptech.glide.Glide
+import com.example.android.uamp.media.BuildConfig
 import java.io.File
 import java.io.FileNotFoundException
 import java.util.concurrent.TimeUnit
@@ -37,9 +38,10 @@ internal class AlbumArtContentProvider : ContentProvider() {
 
         fun mapUri(uri: Uri): Uri {
             val path = uri.encodedPath?.substring(1)?.replace('/', ':') ?: return Uri.EMPTY
+            val authority = if (BuildConfig.FLAVOR == "immersive") "com.example.android.xruamp.immersive" else "com.example.android.xruamp"
             val contentUri = Uri.Builder()
                 .scheme(ContentResolver.SCHEME_CONTENT)
-                .authority("com.example.android.uamp")
+                .authority(authority)
                 .path(path)
                 .build()
             uriMap[contentUri] = uri

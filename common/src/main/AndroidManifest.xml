@@ -39,7 +39,7 @@
 
         <provider
             android:name=".library.AlbumArtContentProvider"
-            android:authorities="com.example.android.uamp"
+            android:authorities="com.example.android.xruamp"
             android:exported="true" />
 
     </application>

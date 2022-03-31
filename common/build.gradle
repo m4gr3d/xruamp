@@ -33,6 +33,16 @@ android {
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
+    flavorDimensions "xrMode"
+    productFlavors {
+        immersive {
+            versionNameSuffix "-immersive"
+        }
+        pancake {
+            versionNameSuffix "-pancake"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -69,7 +79,6 @@ dependencies {
         api "com.google.android.exoplayer:exoplayer-core:$exoplayer_version"
         api "com.google.android.exoplayer:exoplayer-ui:$exoplayer_version"
         api "com.google.android.exoplayer:extension-mediasession:$exoplayer_version"
-        api "com.google.android.exoplayer:extension-cast:$exoplayer_version"
     }
 
     // Glide dependencies

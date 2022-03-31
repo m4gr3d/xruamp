@@ -18,6 +18,7 @@ package com.example.android.uamp.media.extensions
 
 import android.content.ContentResolver
 import android.net.Uri
+import com.example.android.uamp.media.BuildConfig
 import java.io.File
 
 /**
@@ -28,11 +29,10 @@ import java.io.File
  * Returns a Content Uri for the AlbumArtContentProvider
  */
 fun File.asAlbumArtContentUri(): Uri {
+    val authority = if (BuildConfig.FLAVOR == "immersive") "com.example.android.xruamp.immersive" else "com.example.android.xruamp"
     return Uri.Builder()
         .scheme(ContentResolver.SCHEME_CONTENT)
-        .authority(AUTHORITY)
+        .authority(authority)
         .appendPath(this.path)
         .build()
 }
-
-private const val AUTHORITY = "com.example.android.uamp"

@@ -18,9 +18,7 @@ package com.example.android.uamp.media
 
 import android.app.Notification
 import android.app.PendingIntent
-import android.content.ComponentName
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.ResultReceiver
@@ -55,24 +53,16 @@ import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.Player.EVENT_MEDIA_ITEM_TRANSITION
 import com.google.android.exoplayer2.Player.EVENT_PLAY_WHEN_READY_CHANGED
 import com.google.android.exoplayer2.Player.EVENT_POSITION_DISCONTINUITY
-import com.google.android.exoplayer2.Player.EVENT_TIMELINE_CHANGED
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.audio.AudioAttributes
-import com.google.android.exoplayer2.ext.cast.CastPlayer
-import com.google.android.exoplayer2.ext.cast.SessionAvailabilityListener
 import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector
 import com.google.android.exoplayer2.ext.mediasession.TimelineQueueNavigator
 import com.google.android.exoplayer2.ui.PlayerNotificationManager
-import com.google.android.exoplayer2.util.Util
 import com.google.android.exoplayer2.util.Util.constrainValue
-import com.google.android.gms.cast.framework.CastContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
-import kotlin.math.max
-import kotlin.math.min
 
 /**
  * This class is the entry point for browsing and playback commands from the APP's UI
@@ -143,28 +133,6 @@ open class MusicService : MediaBrowserServiceCompat() {
         }
     }
 
-    /**
-     * If Cast is available, create a CastPlayer to handle communication with a Cast session.
-     */
-    private val castPlayer: CastPlayer? by lazy {
-        try {
-            val castContext = CastContext.getSharedInstance(this)
-            CastPlayer(castContext, CastMediaItemConverter()).apply {
-                setSessionAvailabilityListener(UampCastSessionAvailabilityListener())
-                addListener(playerListener)
-            }
-        } catch (e : Exception) {
-            // We wouldn't normally catch the generic `Exception` however
-            // calling `CastContext.getSharedInstance` can throw various exceptions, all of which
-            // indicate that Cast is unavailable.
-            // Related internal bug b/68009560.
-            Log.i(TAG, "Cast is not available on this device. " +
-                    "Exception thrown when attempting to obtain CastContext. " + e.message)
-            null
-        }
-    }
-
-    @ExperimentalCoroutinesApi
     override fun onCreate() {
         super.onCreate()
 
@@ -217,7 +185,7 @@ open class MusicService : MediaBrowserServiceCompat() {
 
         switchToPlayer(
             previousPlayer = null,
-            newPlayer = if (castPlayer?.isCastSessionAvailable == true) castPlayer!! else exoPlayer
+            newPlayer = exoPlayer
         )
         notificationManager.showNotificationForPlayer(currentPlayer)
 
@@ -435,24 +403,6 @@ open class MusicService : MediaBrowserServiceCompat() {
                 description,
                 position
             )
-        }
-    }
-
-    private inner class UampCastSessionAvailabilityListener : SessionAvailabilityListener {
-
-        /**
-         * Called when a Cast session has started and the user wishes to control playback on a
-         * remote Cast receiver rather than play audio locally.
-         */
-        override fun onCastSessionAvailable() {
-            switchToPlayer(currentPlayer, castPlayer!!)
-        }
-
-        /**
-         * Called when a Cast session has ended and the user wishes to control playback locally.
-         */
-        override fun onCastSessionUnavailable() {
-            switchToPlayer(currentPlayer, exoPlayer)
         }
     }
 
