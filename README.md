@@ -23,8 +23,20 @@ Pre-requisites
 Getting Started
 ---------------
 
-This sample uses the Gradle build system. To build this project, use the
-"gradlew build" command or use "Import Project" in Android Studio.
+This sample uses [Android product flavors](https://developer.android.com/studio/build/build-variants#product-flavors) 
+to customize whether a XR build or a regular build is generated.
+
+You can find the product flavors configuration [here](https://github.com/m4gr3d/xruamp/blob/f8ff03978170ab72b3d76e767e35a540047032bd/app/build.gradle#L47)
+and [here](https://github.com/m4gr3d/xruamp/blob/f8ff03978170ab72b3d76e767e35a540047032bd/common/build.gradle#L36).
+And the XR toggle is in the [MainActivity](https://github.com/m4gr3d/xruamp/blob/f8ff03978170ab72b3d76e767e35a540047032bd/app/src/main/java/com/example/android/uamp/MainActivity.kt#L37).
+
+To generate a build, use the following commands:
+- XR build:
+    - `gradlew assembleImmersiveDebug`
+    - The generated apk can be found under `app\build\outputs\apk\immersive\debug`
+- Regular build:
+    - `gradlew assemblePancakeDebug`
+    - The generated apk can be found under `app\build\outputs\apk\pancake\debug`
 
 Support
 -------
