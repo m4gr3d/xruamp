@@ -1,13 +1,19 @@
 XR Universal Android Music Player Sample
 ========================================
-The goal of this sample is to show how to implement an audio media app that works and provides a 
-consistent user experience on regular Android devices and on XR devices like the Meta Quest. 
+The sample shows how to implement a XR audio media app that works and provides a 
+consistent user experience on XR devices like the [Meta Quest](https://en.wikipedia.org/wiki/Oculus_Quest) 
+and on regular Android devices by using the [Godot XRApp framework](https://github.com/m4gr3d/GAST/tree/master/core/src/xrapp). 
 
-This sample is a fork of the [UAMP](https://github.com/android/uamp) sample so to get started with 
-XRUAMP please read the [full UAMP guide](https://github.com/android/uamp/blob/65a27cde558d6a48ec6555396df72fe1039c4e6e/docs/FullGuide.md).
+To find out how to integrate the [Godot XRApp framework](https://github.com/m4gr3d/GAST/tree/master/core/src/xrapp)
+in an Android app, please check the [Usage section](https://github.com/m4gr3d/GAST/tree/master/core/src/xrapp#usage).
 
-![Screenshot showing XRUAMP's UI for browsing albums and songs](docs/images/1-browse-albums-screenshot.png "Browse albums screenshot")
-![Screenshot showing XRUAMP's UI for playing a song](docs/images/2-play-song-screenshot.png "Play song screenshot")
+This sample is based off the [UAMP](https://github.com/android/uamp) sample.
+
+![Screenshot showing XRUAMP's phone UI for browsing albums and songs](docs/images/1-browse-albums-screenshot.png "Browse albums screenshot")
+![Screenshot showing XRUAMP's VR UI for browsing albums and songs](docs/images/3-quest-browse-albums-screenshot.jpg "Browse albums VR screenshot")
+
+![Screenshot showing XRUAMP's phone UI for playing a song](docs/images/2-play-song-screenshot.png "Play song screenshot")
+![Screenshot showing XRUAMP's VR UI for playing a song](docs/images/4-quest-play-song-screenshot.jpg "Play song VR screenshot")
 
 Pre-requisites
 --------------
@@ -22,9 +28,6 @@ This sample uses the Gradle build system. To build this project, use the
 
 Support
 -------
-
-- Check out the [FAQs page](https://github.com/android/uamp/blob/65a27cde558d6a48ec6555396df72fe1039c4e6e/docs/FAQs.md)
-- Stack Overflow: http://stackoverflow.com/questions/tagged/android
 
 If you've found an error in this sample, please
 [file an issue](https://github.com/m4gr3d/xruamp/issues)
